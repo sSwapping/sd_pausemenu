@@ -1,0 +1,9 @@
+{
+  "pauseMenu": "Pause Menu",
+  "backToGame": "Back to Game",
+  "map": "Map",
+  "settings": "Settings",
+  "report": "Reports",
+  "disconnect": "Disconnect",
+  "restart": "Restart in: {{time}}"
+}

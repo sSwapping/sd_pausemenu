@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-flush-mahogany-50: #fdf4f3;
+  --color-flush-mahogany-100: #fce9e7;
+  --color-flush-mahogany-200: #f9d4d2;
+  --color-flush-mahogany-300: #f3b1ae;
+  --color-flush-mahogany-400: #ec8280;
+  --color-flush-mahogany-500: #e05354;
+  --color-flush-mahogany-600: #c43139;
+  --color-flush-mahogany-700: #ab2530;
+  --color-flush-mahogany-800: #8f222e;
+  --color-flush-mahogany-900: #7b202d;
+  --color-flush-mahogany-950: #440d13;
+
+  --color-shark-50: #f9faf9;
+  --color-shark-100: #f4f5f4;
+  --color-shark-200: #e6e6e5;
+  --color-shark-300: #d4d4d3;
+  --color-shark-400: #a4a4a2;
+  --color-shark-500: #737371;
+  --color-shark-600: #535352;
+  --color-shark-700: #41413f;
+  --color-shark-800: #272726;
+  --color-shark-900: #1f1f1e;
+  --color-shark-950: #0b0b0a;
+
+  --breakpoint-3xl: 120rem;
+  --breakpoint-2k: 135rem;
+  --breakpoint-4k: 240rem;
+}
+
+@layer components {
+  /* Sidebar Title Color */
+  .sidebar-title-color {
+    color: var(--color-shark-50);
+  }
+
+  /* Sidebar Button - Active State */
+  .sidebar-btn-active {
+    background-color: var(--color-flush-mahogany-600);
+    color: var(--color-flush-mahogany-50);
+    box-shadow: 0 4px 20px rgba(196, 49, 57, 0.25);
+  }
+
+  /* Sidebar Button - Inactive State */
+  .sidebar-btn-inactive {
+    background-color: rgba(31, 31, 30, 1); /* shark-900 with 100% opacity */
+    color: var(--color-shark-300);
+  }
+
+  .sidebar-btn-inactive:hover {
+    background-color: var(--color-shark-800);
+    color: var(--color-shark-50);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  }
+
+  /* Sidebar Icon - Active State */
+  .sidebar-icon-active {
+    color: var(--color-flush-mahogany-200);
+  }
+
+  /* Sidebar Icon - Inactive State */
+  .sidebar-icon-inactive {
+    color: var(--color-shark-500);
+  }
+
+  .group:hover .sidebar-icon-inactive {
+    color: var(--color-flush-mahogany-400);
+  }
+
+  /* PauseMenu Background Overlay */
+  .pausemenu-overlay {
+    background-color: rgba(11, 11, 10, 0.8); /* shark-950 with 80% opacity */
+  }
+
+  /* PauseMenu Restart Text */
+  .pausemenu-restart-text {
+    color: var(--color-shark-50);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* PauseMenu Discord Icon */
+  .pausemenu-discord-icon {
+    color: var(--color-shark-300);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  .pausemenu-discord-icon:hover {
+    color: #5865f2;
+    transform: scale(1.1);
+  }
+}
