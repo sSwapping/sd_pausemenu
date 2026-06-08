@@ -14,8 +14,8 @@ shared_scripts {
 }
 
 files {
-  'ui/dist/index.html',
-  'ui/dist/**/*',
+  'web/dist/index.html',
+  'web/dist/**/*',
   'locales/*.json',
 }
 
