@@ -2,6 +2,7 @@ local config = require 'shared.config'
 local isOpen, frontendMode, pauseCam, dofActive = false, nil, nil, false
 local vehicleControlsTracked, frontendControlsTracked = false, false
 local pauseEffectsActive, menuOpening = false, false
+local restartSecondsLeft, restartTimerActive = 0, false
 
 local pauseMenuHash = `FE_MENU_VERSION_MP_PAUSE`
 local settingsHash = -1031775802
@@ -14,6 +15,34 @@ local function formatClock(sec)
     local mm = math.floor((sec - hh * 3600) / 60)
     local ss = math.floor(sec - hh * 3600 - mm * 60)
     return string.format("%02d:%02d:%02d", hh, mm, ss)
+end
+
+local function sendRestartTime()
+    SendNUIMessage({
+        type = 'sd_pausemenu:nui:setRestartTime',
+        restartIn = formatClock(restartSecondsLeft),
+        discord = config.discordLink
+    })
+end
+
+local function startRestartTimer(restartSeconds)
+    restartSecondsLeft = tonumber(restartSeconds) or 0
+    sendRestartTime()
+
+    if restartTimerActive then return end
+    restartTimerActive = true
+
+    CreateThread(function()
+        while isOpen do
+            Wait(5000)
+            if not isOpen then break end
+
+            restartSecondsLeft = math.max(restartSecondsLeft - 5, 0)
+            sendRestartTime()
+        end
+
+        restartTimerActive = false
+    end)
 end
 
 local function disableControls(trackVehicle, trackFrontend)
@@ -125,7 +154,21 @@ local function createDof()
         SetCamDofStrength(pauseCam, 1.0)
     end
 
-    if not pauseEffectsActive then pauseEffect() end
+    pauseEffect()
+end
+
+local function destroyDof()
+    if not dofActive then return end
+    dofActive = false
+
+    if pauseCam and DoesCamExist(pauseCam) then
+        SetCamUseShallowDofMode(pauseCam, false)
+        SetCamNearDof(pauseCam, 0.0)
+        SetCamFarDof(pauseCam, 0.0)
+        SetCamDofStrength(pauseCam, 0.0)
+    end
+
+    ClearExtraTimecycleModifier()
 end
 
 local function nuiFocus(state, restartSeconds)
@@ -140,13 +183,9 @@ local function nuiFocus(state, restartSeconds)
     if state then
         createPauseCam()
         createDof()
-        SendNUIMessage({
-            type = 'sd_pausemenu:nui:setRestartTime',
-            restartIn = formatClock(restartSeconds),
-            discord = config.discordLink
-        })
+        startRestartTimer(restartSeconds)
     else
-        createDof()
+        destroyDof()
         destroyPauseCam()
     end
 
@@ -276,7 +315,7 @@ CreateThread(function()
     end
 end)
 
-RegisterNUICallback('sd_pausemenu:nui:closeMenu', function(_, cb)
+RegisterNUICallback('sd_pausemenu:nui:close', function(_, cb)
     closeMenu()
     cb(true)
 end)

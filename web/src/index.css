@@ -25,9 +25,9 @@
   --color-shark-900: #1f1f1e;
   --color-shark-950: #0b0b0a;
 
-  --breakpoint-3xl: 120rem;
-  --breakpoint-2k: 135rem;
-  --breakpoint-4k: 240rem;
+  --breakpoint-3xl: 119rem;
+  --breakpoint-2k: 134rem;
+  --breakpoint-4k: 239rem;
 }
 
 @layer components {
