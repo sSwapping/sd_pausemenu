@@ -16,6 +16,7 @@ shared_scripts {
 files {
   'ui/dist/index.html',
   'ui/dist/**/*',
+  'locales/*.json',
 }
 
 client_scripts {
