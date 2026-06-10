@@ -25,9 +25,9 @@
   --color-shark-900: #1f1f1e;
   --color-shark-950: #0b0b0a;
 
-  --breakpoint-3xl: 119rem;
-  --breakpoint-2k: 134rem;
-  --breakpoint-4k: 239rem;
+  --breakpoint-3xl: 1904px;
+  --breakpoint-2k: 2144px;
+  --breakpoint-4k: 3824px;
 }
 
 @layer components {
@@ -38,9 +38,9 @@
 
   /* Sidebar Button - Active State */
   .sidebar-btn-active {
-    background-color: var(--color-flush-mahogany-600);
-    color: var(--color-flush-mahogany-50);
-    box-shadow: 0 4px 20px rgba(196, 49, 57, 0.25);
+    background-color: var(--color-shark-100);
+    color: var(--color-shark-900);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
   /* Sidebar Button - Inactive State */
@@ -59,7 +59,7 @@
 
   /* Sidebar Icon - Active State */
   .sidebar-icon-active {
-    color: var(--color-flush-mahogany-200);
+    color: var(--color-shark-900);
   }
 
   /* Sidebar Icon - Inactive State */
@@ -68,7 +68,7 @@
   }
 
   .group:hover .sidebar-icon-inactive {
-    color: var(--color-flush-mahogany-400);
+    color: var(--color-shark-100);
   }
 
   /* PauseMenu Background Overlay */
@@ -91,5 +91,86 @@
   .pausemenu-discord-icon:hover {
     color: #5865f2;
     transform: scale(1.1);
+  }
+}
+
+.sidebar-container {
+  max-width: 420px;
+}
+.sidebar-title {
+  font-size: 54px;
+}
+.sidebar-nav {
+  gap: 10px;
+}
+.sidebar-btn {
+  padding: 16px 20px;
+  font-size: 16px;
+  gap: 16px;
+}
+.sidebar-icon {
+  font-size: 20px;
+}
+
+/* 1920x1080 */
+@media (min-width: 1920px) {
+  .sidebar-container {
+    max-width: 480px;
+  }
+  .sidebar-title {
+    font-size: 64px;
+  }
+  .sidebar-nav {
+    gap: 12px;
+  }
+  .sidebar-btn {
+    padding: 20px 24px;
+    font-size: 18px;
+    gap: 16px;
+  }
+  .sidebar-icon {
+    font-size: 24px;
+  }
+}
+
+/* 2560x1440 */
+@media (min-width: 2560px) {
+  .sidebar-container {
+    max-width: 540px;
+  }
+  .sidebar-title {
+    font-size: 72px;
+  }
+  .sidebar-nav {
+    gap: 14px;
+  }
+  .sidebar-btn {
+    padding: 28px 32px;
+    font-size: 20px;
+    gap: 20px;
+  }
+  .sidebar-icon {
+    font-size: 36px;
+  }
+}
+
+/* 4K (3840x2160) */
+@media (min-width: 3840px) {
+  .sidebar-container {
+    max-width: 620px;
+  }
+  .sidebar-title {
+    font-size: 84px;
+  }
+  .sidebar-nav {
+    gap: 16px;
+  }
+  .sidebar-btn {
+    padding: 36px 40px;
+    font-size: 24px;
+    gap: 24px;
+  }
+  .sidebar-icon {
+    font-size: 48px;
   }
 }
