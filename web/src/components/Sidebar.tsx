@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { SidebarProps } from "../types/sidebar";
 import { useTranslation } from "react-i18next";
+import "./sidebar.css";
 
 const Sidebar = ({
   navItems,

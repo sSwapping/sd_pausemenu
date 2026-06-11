@@ -27,27 +27,27 @@ const PauseMenu = () => {
   const navItems: NavItem[] = [
     {
       label: t("backToGame"),
-      icon: <FaPlay className='text-sm' />,
+      icon: <FaPlay />,
       action: "backtogame",
     },
     {
       label: t("map"),
-      icon: <FaMapMarkedAlt className='text-sm' />,
+      icon: <FaMapMarkedAlt />,
       action: "map",
     },
     {
       label: t("settings"),
-      icon: <FaCog className='text-sm' />,
+      icon: <FaCog />,
       action: "settings",
     },
     {
       label: t("report"),
-      icon: <FaClipboardList className='text-sm' />,
+      icon: <FaClipboardList />,
       action: "report",
     },
     {
       label: t("disconnect"),
-      icon: <FaPowerOff className='text-sm' />,
+      icon: <FaPowerOff />,
       action: "disconnect",
     },
   ];
